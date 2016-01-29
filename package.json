@@ -1,0 +1,30 @@
+{
+  "name": "rlookup",
+  "version": "0.1.0",
+  "description": "autocomplete for react support sync & promise",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mBourges/RLookup.git"
+  },
+  "keywords": [
+    "react",
+    "autocomplete",
+    "typeahead"
+  ],
+  "author": "Matthieu Bourges <m.bourges@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mBourges/RLookup/issues"
+  },
+  "homepage": "https://github.com/mBourges/RLookup#readme",
+  "dependencies": {
+    "immutable": "3.7.6",
+    "react": "0.14.7",
+    "react-dom": "0.14.7",
+    "rx": "4.0.7"
+  }
+}
