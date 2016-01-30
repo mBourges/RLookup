@@ -5,7 +5,7 @@
   "main": "dist/bundle.js",
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
-    "build": "webpack",
+    "build": "babel ./src/index.js -o ./dist/bundle.js",
     "postbuild": "cp ./src/starwars-name.json ./dist/starwars-name.json",
     "commit": "git-cz",
     "check-coverage": "istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0",
@@ -36,10 +36,11 @@
     "unique-random-array": "1.0.0"
   },
   "devDependencies": {
+    "babel-cli": "6.4.5",
     "babel-core": "6.4.5",
     "babel-loader": "6.2.1",
-    "babel-preset-react": "6.3.13",
     "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "6.3.13",
     "babel-register": "6.4.3",
     "chai": "3.5.0",
     "commitizen": "2.5.0",
