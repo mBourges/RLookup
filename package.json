@@ -1,14 +1,16 @@
 {
-  "name": "rlookup",
-  "version": "0.1.0",
+  "name": "react-lookup",
+  "version": "0.0.0-semantically-released",
   "description": "autocomplete for react support sync & promise",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "git-cz",
+    "test": "mocha src/index.test.js -w",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mBourges/RLookup.git"
+    "url": "https://github.com/mBourges/react-lookup.git"
   },
   "keywords": [
     "react",
@@ -18,13 +20,25 @@
   "author": "Matthieu Bourges <m.bourges@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mBourges/RLookup/issues"
+    "url": "https://github.com/mBourges/react-lookup/issues"
   },
-  "homepage": "https://github.com/mBourges/RLookup#readme",
+  "homepage": "https://github.com/mBourges/react-lookup#readme",
   "dependencies": {
     "immutable": "3.7.6",
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "rx": "4.0.7"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "commitizen": "2.5.0",
+    "cz-conventional-changelog": "1.1.5",
+    "mocha": "2.4.5",
+    "semantic-release": "^4.3.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }
