@@ -6,7 +6,6 @@
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
     "build": "babel ./src/index.js -o ./dist/bundle.js",
-    "postbuild": "cp ./src/starwars-name.json ./dist/starwars-name.json",
     "commit": "git-cz",
     "check-coverage": "istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0",
     "test": "mocha  -R spec --compilers js:babel-register src/index.test.js",
