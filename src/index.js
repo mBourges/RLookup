@@ -6,4 +6,6 @@ class ReactLookup extends React.Component {
 	}
 }
 
-export default ReactLookup;
+module.exports = {
+	ReactLookup: ReactLookup
+}
