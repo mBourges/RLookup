@@ -7,7 +7,7 @@
     "prebuild": "rm -rf dist && mkdir dist",
     "build": "webpack",
     "commit": "git-cz",
-    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "check-coverage": "istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0",
     "test": "mocha  -R spec --compilers js:babel-register src/index.test.js",
     "test:single": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js --compilers js:babel-register",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -56,7 +56,7 @@
       "path": "node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run test:single && npm run check-coverage"
+      "pre-commit": "npm run test"
     }
   }
 }
