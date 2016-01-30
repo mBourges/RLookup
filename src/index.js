@@ -1,7 +1,8 @@
-import uid from 'uid';
 
 module.exports = {
-  id: uid(10)
+  id: function() {
+  	console.log('Hello World!')
+  }
 };
 
 /*import React from 'react';
