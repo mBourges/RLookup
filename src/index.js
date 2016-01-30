@@ -1,9 +1,9 @@
-var React = require('React');
+import React from 'react';
 
-var RLookup = React.createClass({
+class ReactLookup extends React.Component {
 	render() {
 		return (<input placeholder="Search" />);
 	}
-});
+}
 
-export default RLookup;
+export default ReactLookup;
