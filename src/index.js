@@ -1,18 +1,21 @@
+import uniqueRandomArray from 'unique-random-array';
+import starWarsNames from './starwars-name.json';
+
+var getRandomItem = uniqueRandomArray(starWarsNames);
 
 module.exports = {
-  id: function() {
-  	console.log('Hello World!')
-  }
+  all: starWarsNames,
+  random: random
 };
 
-/*import React from 'react';
-
-class ReactLookup extends React.Component {
-	render() {
-		return (<input placeholder="Search!" />);
-	}
+function random(number) {
+  if (number === undefined) {
+    return getRandomItem();
+  } else {
+    var randomItems = [];
+    for (var i = 0; i < number; i++) {
+      randomItems.push(getRandomItem());
+    }
+    return randomItems;
+  }
 }
-
-module.exports = {
-	ReactLookup: ReactLookup
-}*/

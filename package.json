@@ -6,6 +6,7 @@
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
     "build": "webpack",
+    "postbuild": "cp ./src/starwars-name.json ./dist/starwars-name.json",
     "commit": "git-cz",
     "check-coverage": "istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0",
     "test": "mocha  -R spec --compilers js:babel-register src/index.test.js",
@@ -32,7 +33,7 @@
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "rx": "4.0.7",
-    "uid": "0.0.2"
+    "unique-random-array": "1.0.0"
   },
   "devDependencies": {
     "babel-core": "6.4.5",
