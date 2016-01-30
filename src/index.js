@@ -1,4 +1,10 @@
-import React from 'react';
+import uid from 'uid';
+
+module.exports = {
+  id: uid(10)
+};
+
+/*import React from 'react';
 
 class ReactLookup extends React.Component {
 	render() {
@@ -8,4 +14,4 @@ class ReactLookup extends React.Component {
 
 module.exports = {
 	ReactLookup: ReactLookup
-}
+}*/
