@@ -1,0 +1,48 @@
+.autocomplete {
+  /* position: relative; */
+}
+
+.autocomplete .result-list {
+  max-height: 200px;
+  width: 50%;
+  background-color: #fff;
+  position: absolute;
+  /* top: 0px; */
+  padding-left: 15px;
+  margin:0px;
+  border-width: 1px;
+  border-style: solid;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-x: none;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.autocomplete .result-list > li {
+  padding: 3px 0px;
+}
+
+.autocomplete .result-list > li.active {
+  color: #fff;
+  background-color: black;
+}
+
+.autocomplete .result-list > li:hover {
+  color: #fff;
+  background-color: black;
+}
+
+.autocomplete ::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+.autocomplete ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+.autocomplete ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

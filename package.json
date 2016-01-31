@@ -4,11 +4,14 @@
   "description": "autocomplete for react support sync & promise",
   "main": "dist/bundle.js",
   "scripts": {
+    "dist": "webpack --progress --colors --config dist.config.js",
+    "dist.min": "webpack --progress --colors --optimize-minimize --optimize-occurence-order --optimize-dedupe --config dist.min.config.js",
     "prebuild": "rm -rf dist && mkdir dist",
-    "build": "babel ./src/index.js -o ./dist/bundle.js",
+    "build": "npm run dist && webpack --progress",
+    "postbuild": "cp ./src/style.css ./dist/style.css",
     "commit": "git-cz",
     "check-coverage": "istanbul check-coverage --statements 0 --branches 0 --functions 0 --lines 0",
-    "test": "mocha  -R spec --compilers js:babel-register src/index.test.js",
+    "test": "mocha  -R spec --compilers js:babel-register tests/**/*.spec.js",
     "test:single": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js --compilers js:babel-register",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -28,11 +31,11 @@
   },
   "homepage": "https://github.com/mBourges/react-lookup#readme",
   "dependencies": {
+    "classnames": "2.2.3",
     "immutable": "3.7.6",
     "react": "0.14.7",
     "react-dom": "0.14.7",
-    "rx": "4.0.7",
-    "unique-random-array": "1.0.0"
+    "rx": "4.0.7"
   },
   "devDependencies": {
     "babel-cli": "6.4.5",

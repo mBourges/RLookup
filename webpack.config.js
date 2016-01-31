@@ -1,7 +1,7 @@
 module.exports = {
-	entry: './src/index.js',
+	entry: './examples/script.js',
 	output: {
-		filename: './dist/bundle.js'
+		filename: './examples/bundle.js'
 	},
 	module: {
 		loaders: [
@@ -10,7 +10,8 @@ module.exports = {
 				exclude: /(node_module|bower_components)/,
 				loader: 'babel',
 				query: {
-                    cacheDirectory: true,
+					compact: false,
+                    cacheDirectory: false,
                     presets: ['es2015', 'react']
                 }
 			}
