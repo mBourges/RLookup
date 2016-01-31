@@ -184,7 +184,10 @@ if(this.props.optionsLoader) {
     
 
     
-    keyUpStream.merge(blurStream).merge(keyDownStream).subscribe(
+    keyUpStream
+        .merge(blurStream)
+        .merge(keyDownStream)
+        .subscribe(
   data => {
     this.setState(data);
     console.log(data)
@@ -200,17 +203,19 @@ if(this.props.optionsLoader) {
       const hasResults = this.state.results.size !== 0 ;
       
       return (<div className="autocomplete">
-        <input ref="AutocompleteInput" placeholder={ this.props.placeholder } defaultValue={this.state.selected ? this.state.selected.get('label') : ''} />
+        <input ref="AutocompleteInput" className={ this.props.inputClassName } placeholder={ this.props.placeholder } defaultValue={this.state.selected ? this.state.selected.get('label') : ''} />
         
         { this.state.showResultList && <ResultList ref="list" 
+            listClassName={ this.props.listClassName }
+            listItemClassName={ this.props.listItemClassName }
             options={ this.state.results }
             hasResults={ hasResults } 
-            displaySearchMessage={ displaySearchMessage } displayNoResultMessage={ displayNoResultMessage } onMouseDown={ this.selectItem.bind(this) } highlightedIndex={ this.state.highlightedIndex  } /> }
-        
-        
-        
-    <span>{ this.state.selected.get('label') } - { this.state.selected.get('value') }</span>
-    </div>)
+            displaySearchMessage={ displaySearchMessage }
+            displayNoResultMessage={ displayNoResultMessage }
+            onMouseDown={ this.selectItem.bind(this) }
+            highlightedIndex={ this.state.highlightedIndex  }
+        /> }
+    </div>);
   }
 }
 
@@ -221,6 +226,6 @@ Autocomplete.propTypes = {
 
 Autocomplete.defaultProps ={
   placeholder: 'Search',
-}
+};
 
 export default Autocomplete;

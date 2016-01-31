@@ -14,7 +14,12 @@ const ResultListItem = ({onMouseDown, option, highlightedIndex, index }) => {
         active: isActive()
     });
     
-    return (<li onMouseDown={ handleClick } className={ styleClass }>
+    const listItemClassName = ClassNames(
+            listItemClassName,
+            "result-list"
+        );
+    
+    return (<li className={ listItemClassName } onMouseDown={ handleClick } className={ styleClass }>
         { option.get('label') }
     </li>);
 };

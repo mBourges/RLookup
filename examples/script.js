@@ -75,7 +75,32 @@ const getAction = () => {
   	});
 };
 
-ReactDOM.render(<div>
-    <ReactLookup options={ options } />
-    <ReactLookup optionsLoader={ getAction() } />
-</div>, document.getElementById('app'));
+class App extends React.Component {
+    getValues(event){
+        event.preventDefault();
+        event.stopPropagation();
+        
+        console.log('this.refs.AsyncExample', this.refs.AsyncExample.getSelectedItem())
+    }
+    
+    render() {
+        
+        return (<div className="col-md-4 col-md-offset-3">
+            <form>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Sync</label>
+                <ReactLookup placeholder="検索" ref="AsyncExample" inputClassName="form-control" options={ options } />
+                <button onClick={ this.getValues.bind(this) }>Get Values!</button>
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Async</label>
+                <ReactLookup optionsLoader={ getAction() } />
+              </div>
+            </form>
+        </div>);
+    }
+}
+
+ReactDOM.render(<App />, document.getElementById('app'));
+
+

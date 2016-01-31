@@ -1,10 +1,10 @@
 .autocomplete {
-  /* position: relative; */
+   position: relative; 
 }
 
 .autocomplete .result-list {
   max-height: 200px;
-  width: 50%;
+  width: 100%;
   background-color: #fff;
   position: absolute;
   /* top: 0px; */

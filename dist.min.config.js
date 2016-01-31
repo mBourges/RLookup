@@ -6,6 +6,17 @@ module.exports = {
         library      : 'ReactLookup',
         filename     : 'bundle.min.js'
     },
+    externals: {
+        'react': true,
+        'react-dom': true,
+        'immutable': true,
+        'rx': true,
+        'classnames': true
+    },
+    resolve: {
+        // Allow to omit extensions when requiring these files
+        extensions: ['', '.js', '.jsx']
+    },
     module: {
         loaders: [
 			{
@@ -20,4 +31,4 @@ module.exports = {
 			}
 		]
     }
-}
+};
