@@ -20,7 +20,7 @@ export default class Autocomplete extends React.Component {
     }
     
     getSelectedItem() {
-        return this.state.selected;
+        return this.state.selected.toJS();
     }
     
     ensureHighlightedVisible() {
@@ -51,6 +51,7 @@ export default class Autocomplete extends React.Component {
                 value: ''
             })
         }
+        
         this.setState({
           isSearching: false,
           showResultList: false,
@@ -62,6 +63,10 @@ export default class Autocomplete extends React.Component {
        } else {
            ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = '';
        }
+      
+      if(this.props.onChange) {
+          this.props.onChange(item.toJS());
+      }
       
         this.setState({
             selected: item,
@@ -225,7 +230,8 @@ if(this.props.optionsLoader) {
 
 Autocomplete.propTypes = {
 	options: React.PropTypes.array,
-	optionsLoader: React.PropTypes.func
+	optionsLoader: React.PropTypes.func,
+	onChange: React.PropTypes.func
 };
 
 Autocomplete.defaultProps ={
