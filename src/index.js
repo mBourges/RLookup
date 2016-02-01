@@ -173,7 +173,7 @@ if(this.props.optionsLoader) {
       return event.target.value;
   })
   .flatMapLatest(value => {
-  		return Rx.Observable.fromPromise(this.props.optionsLoader)
+  		return Rx.Observable.fromPromise(this.props.optionsLoader(value))
     })
     .map(results => {
     	console.log('Promise Results', results);
