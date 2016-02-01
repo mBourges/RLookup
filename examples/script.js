@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactLookup from '../dist/bundle'
+import Immutable from 'immutable';
 
 const options = [{
   				label: "Matt",
@@ -67,10 +68,15 @@ const options = [{
   				value: "matthew"
   			}]
 
-const getAction = () => {
+const getAction = (name) => {
   	return new Promise(function(resolve, reject) {
+  	    const results = Immutable.fromJS(options).filter(item => {
+  			const regexp = new RegExp("^" + name + ".*", "i");
+  			return regexp.test(item.get('value'));
+  		})
+  		
   		return setTimeout(() => {
-  			resolve(options);
+  			resolve(results.toJS());
   		}, 2000);
   	});
 };
@@ -89,12 +95,12 @@ class App extends React.Component {
             <form>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Sync</label>
-                <ReactLookup placeholder="検索" ref="AsyncExample" inputClassName="form-control" options={ options } />
+                <ReactLookup placeholder="検索" ref="AsyncExample" inputClassName="form-control" options={ options } searchMessage="Searching..." noResultMessage="No Result Found"/>
                 <button onClick={ this.getValues.bind(this) }>Get Values!</button>
               </div>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Async</label>
-                <ReactLookup optionsLoader={ getAction() } />
+                <ReactLookup optionsLoader={ getAction } />
               </div>
             </form>
         </div>);

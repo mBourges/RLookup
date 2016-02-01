@@ -216,6 +216,8 @@ if(this.props.optionsLoader) {
             displayNoResultMessage={ displayNoResultMessage }
             onMouseDown={ this.selectItem.bind(this) }
             highlightedIndex={ this.state.highlightedIndex  }
+            searchMessage={ this.props.searchMessage }
+            noResultMessage={ this.props.noResultMessage }
         /> }
     </div>);
   }
@@ -223,7 +225,7 @@ if(this.props.optionsLoader) {
 
 Autocomplete.propTypes = {
 	options: React.PropTypes.array,
-	optionsLoader: React.PropTypes.object
+	optionsLoader: React.PropTypes.func
 };
 
 Autocomplete.defaultProps ={

@@ -4,6 +4,7 @@ import ClassNames from 'classnames';
             
 class ResultList extends React.Component {
     render() {
+        console.log('Searching', this.props.displaySearchMessage)
         const listClassName = ClassNames(
             this.props.listClassName,
             "result-list"
@@ -32,12 +33,14 @@ ResultList.propTypes = {
     displaySearchMessage: React.PropTypes.bool.isRequired,
     displayNoResultMessage: React.PropTypes.bool.isRequired,
     onMouseDown: React.PropTypes.func.isRequired,
-    highlightedIndex: React.PropTypes.number.isRequired
+    highlightedIndex: React.PropTypes.number.isRequired,
+    searchMessage: React.PropTypes.string,
+    noResultMessage: React.PropTypes.string
 };
 
 ResultList.defaultProps = {
-    seachMessage: 'Searching...',
-    noResultMeassga: 'No Results found.'
-}
+    searchMessage: 'Searching...',
+    noResultMessage: 'No Results found.'
+};
 
 export default ResultList;
