@@ -15,7 +15,7 @@ export default class Autocomplete extends React.Component {
             showResultList: false,
             isSearching: false,
             highlightedIndex: -1,
-            selected: Immutable.Map({})
+            selected: this.props.defaultValue ? Immutable.fromJS(this.props.defaultValue) : Immutable.Map({})
         };
     }
     
