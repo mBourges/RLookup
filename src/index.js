@@ -75,6 +75,7 @@ export default class Autocomplete extends React.Component {
     }
 
   componentDidMount() {
+      console.log('componentDidMount', this.props.defaultValue, this.state.selected)
     const inputElement = ReactDOM.findDOMNode(this.refs.AutocompleteInput);
     
     const keyDownStream = Rx.Observable
@@ -123,6 +124,9 @@ export default class Autocomplete extends React.Component {
        
     
     const resetInput = () => {
+        if(ReactDOM.findDOMNode(this.refs.AutocompleteInput).value === '') {
+            this.selectItem(undefined);
+        }
         return {
       results: Immutable.List(),
             showResultList: false,
@@ -210,7 +214,7 @@ if(this.props.optionsLoader) {
       const hasResults = this.state.results.size !== 0 ;
       
       return (<div className="autocomplete">
-        <input ref="AutocompleteInput" className={ this.props.inputClassName } placeholder={ this.props.placeholder } defaultValue={this.state.selected ? this.state.selected.get('label') : ''} />
+        <input ref="AutocompleteInput" className={ this.props.inputClassName } placeholder={ this.props.placeholder } defaultValue={　this.state.selected ? this.state.selected.get('label') : ''} />
         
         { this.state.showResultList && <ResultList ref="list" 
             listClassName={ this.props.listClassName }
