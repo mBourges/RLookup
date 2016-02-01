@@ -58,8 +58,10 @@ export default class Autocomplete extends React.Component {
       });
       
        if (item) {
-                ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = item.get('label');
-            }
+           ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = item.get('label');
+       } else {
+           ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = '';
+       }
       
         this.setState({
             selected: item,
@@ -225,7 +227,7 @@ Autocomplete.propTypes = {
 };
 
 Autocomplete.defaultProps ={
-  placeholder: 'Search',
+  placeholder: '',
 };
 
 export default Autocomplete;
