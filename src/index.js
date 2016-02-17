@@ -214,7 +214,7 @@ if(this.props.optionsLoader) {
       const hasResults = this.state.results.size !== 0 ;
       
       return (<div className="autocomplete">
-        <input ref="AutocompleteInput" className={ this.props.inputClassName } placeholder={ this.props.placeholder } defaultValue={　this.state.selected ? this.state.selected.get('label') : ''} />
+        <input ref="AutocompleteInput" required={ this.props.required } className={ this.props.inputClassName } placeholder={ this.props.placeholder } defaultValue={　this.state.selected ? this.state.selected.get('label') : ''} />
         
         { this.state.showResultList && <ResultList ref="list" 
             listClassName={ this.props.listClassName }
