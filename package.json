@@ -33,8 +33,6 @@
   "dependencies": {
     "classnames": "2.2.3",
     "immutable": "3.7.6",
-    "react": "0.14.7",
-    "react-dom": "0.14.7",
     "rx": "4.0.7"
   },
   "devDependencies": {
@@ -53,7 +51,9 @@
     "ghooks": "1.0.3",
     "istanbul": "0.4.2",
     "mocha": "2.4.5",
+    "react": "0.14.7",
     "react-addons-test-utils": "0.14.7",
+    "react-dom": "0.14.7",
     "semantic-release": "4.3.5",
     "webpack": "1.12.12"
   },

@@ -14,7 +14,6 @@ module.exports = {
         'classnames': true
     },
     resolve: {
-        // Allow to omit extensions when requiring these files
         extensions: ['', '.js', '.jsx']
     },
     module: {
