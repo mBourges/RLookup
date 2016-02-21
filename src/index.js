@@ -75,7 +75,6 @@ export default class Autocomplete extends React.Component {
     }
 
   componentDidMount() {
-      console.log('componentDidMount', this.props.defaultValue, this.state.selected)
     const inputElement = ReactDOM.findDOMNode(this.refs.AutocompleteInput);
     
     const keyDownStream = Rx.Observable
@@ -185,7 +184,6 @@ if(this.props.optionsLoader) {
   		return Rx.Observable.fromPromise(this.props.optionsLoader(value))
     })
     .map(results => {
-    	console.log('Promise Results', results);
         return {
           results: Immutable.fromJS(results),
           isSearching: false

@@ -4,7 +4,6 @@ import ClassNames from 'classnames';
             
 class ResultList extends React.Component {
     render() {
-        console.log('Searching', this.props.displaySearchMessage)
         const listClassName = ClassNames(
             this.props.listClassName,
             "result-list"
