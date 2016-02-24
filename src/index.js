@@ -66,12 +66,21 @@ export default class Autocomplete extends React.Component {
       
       if(this.props.onChange) {
           this.props.onChange(item.toJS());
-      }
-      
+          
+      } 
         this.setState({
             selected: item,
             results: Immutable.List()
         });
+        
+        if(this.props.resetOnChange){
+            ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = '';
+            this.setState({
+                selected: Immutable.Map({}),
+                results: Immutable.List()
+            });
+        }
+      
     }
 
   componentDidMount() {
@@ -123,7 +132,7 @@ export default class Autocomplete extends React.Component {
        
     
     const resetInput = () => {
-        if(ReactDOM.findDOMNode(this.refs.AutocompleteInput).value === '') {
+        if(!this.props.resetOnChange && ReactDOM.findDOMNode(this.refs.AutocompleteInput).value === '') {
             this.selectItem(undefined);
         }
         return {
@@ -199,7 +208,7 @@ if(this.props.optionsLoader) {
         .subscribe(
   data => {
     this.setState(data);
-    console.log(data)
+    console.log('End of Stream', data);
   },
   error=> {
     console.log('Error:' + error);
