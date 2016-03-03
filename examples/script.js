@@ -67,6 +67,11 @@ const options = [{
   				label: "Matthew",
   				value: "matthew"
   			}]
+  			
+const defaultValue = {
+  				label: "Matt",
+  				value: "matt"
+  			}
 
 const getAction = (name) => {
   	return new Promise(function(resolve, reject) {
@@ -82,12 +87,27 @@ const getAction = (name) => {
 };
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      selectedValue: ''
+    }
+  }
     getValues(event){
         event.preventDefault();
         event.stopPropagation();
         
         console.log('this.refs.AsyncExample', this.refs.AsyncExample.getSelectedItem())
     }
+    
+    onChange(item) {
+      console.log('OnChange(item)', item);
+      
+      this.setState({
+        selectedValue: item
+      });
+    }
+    
     
     render() {
         
@@ -101,6 +121,15 @@ class App extends React.Component {
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Async</label>
                 <ReactLookup optionsLoader={ getAction } />
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Async Default Value</label>
+                <ReactLookup optionsLoader={ getAction } defaultValue={ defaultValue } onChange={this.onChange.bind(this)} resetOnChange={ true } />
+                <div>{ this.state.selectedValue.value }</div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Async Default Value</label>
+                <ReactLookup optionsLoader={ getAction } defaultValue={ defaultValue } onChange={this.onChange.bind(this)} resetOnChange={ false } />
               </div>
             </form>
         </div>);

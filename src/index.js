@@ -91,21 +91,26 @@ export default class Autocomplete extends React.Component {
   .filter(event => this.isSelectKey(event))
   .map(event => {
       const code = event.keyCode;
+      const value = event.target.value;
     let highlightedIndex = this.state.highlightedIndex;
             
         switch (code) {
             case 9:
                 if(highlightedIndex >= 0) {
                     this.selectItem(this.state.results.get(this.state.highlightedIndex));
+                } else if(value === '') {
+                    this.selectItem(undefined);
                 } else {
-                	this.selectItem(undefined);
+                    this.selectItem(this.state.selected);
                 }
                 break;
             case 13:
-                if(highlightedIndex >= 0) {
+                 if(highlightedIndex >= 0) {
                     this.selectItem(this.state.results.get(this.state.highlightedIndex));
+                } else if(value === '') {
+                    this.selectItem(undefined);
                 } else {
-                	this.selectItem(undefined);
+                    this.selectItem(this.state.selected);
                 }
                 break;
             case 40:
@@ -119,12 +124,21 @@ export default class Autocomplete extends React.Component {
         // this.setState({ highlightedIndex: highlightedIndex });
         highlightedIndex > -1 && this.ensureHighlightedVisible();
         
-        if (code === 13 || code === 40 || code === 38) {
+        if (code === 40 || code === 38) {
+            console.log('Stop Event')
             event.preventDefault();
             event.stopPropagation();
+            
+            return { highlightedIndex: highlightedIndex }
         }
-        
-        return { highlightedIndex: highlightedIndex }
+      console.log('KEYDOWN STREAM') 
+        // 
+        return {
+              isSearching: false,
+              showResultList: false,
+              highlightedIndex: -1,
+              results: Immutable.List()
+          }
   });
     
     
@@ -193,6 +207,7 @@ if(this.props.optionsLoader) {
   		return Rx.Observable.fromPromise(this.props.optionsLoader(value))
     })
     .map(results => {
+        console.log('KEYUP STREAM')
         return {
           results: Immutable.fromJS(results),
           isSearching: false
