@@ -64,7 +64,7 @@ export default class Autocomplete extends React.Component {
            ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = '';
        }
       
-      if(this.props.onChange) {
+      if(item && this.props.onChange) {
           this.props.onChange(item.toJS());
           
       } 
@@ -217,16 +217,38 @@ if(this.props.optionsLoader) {
     
 
     
-    keyUpStream
+    var inputStream = keyUpStream
         .merge(blurStream)
         .merge(keyDownStream)
-        .subscribe(
+        .catch(e => {
+            console.log('Test')
+            console.log(e)
+            
+            this.setState({
+                results: Immutable.List(),
+                showResultList: false,
+                isSearching: false,
+                highlightedIndex: -1,
+                // selected: this.props.defaultValue ? Immutable.fromJS(this.props.defaultValue) : Immutable.Map({})
+            });
+            
+            return inputStream;
+        });
+        
+        inputStream.subscribe(
   data => {
     this.setState(data);
     console.log('End of Stream', data);
   },
   error=> {
-    console.log('Error:' + error);
+    //   this.setState({
+    //         results: Immutable.List(),
+    //         showResultList: false,
+    //         isSearching: false,
+    //         highlightedIndex: -1,
+    //         selected: this.props.defaultValue ? Immutable.fromJS(this.props.defaultValue) : Immutable.Map({})
+    //     });
+    console.log('Error: ', error);
   });
   }
   
@@ -236,7 +258,13 @@ if(this.props.optionsLoader) {
       const hasResults = this.state.results.size !== 0 ;
       
       return (<div className="autocomplete">
-        <input ref="AutocompleteInput" required={ this.props.required } className={ this.props.inputClassName } placeholder={ this.props.placeholder } defaultValue={　this.state.selected ? this.state.selected.get('label') : ''} />
+        <input
+            ref="AutocompleteInput"
+            required={ this.props.required }
+            className={ this.props.inputClassName }
+            placeholder={ this.props.placeholder }
+            defaultValue={ this.state.selected ? this.state.selected.get('label') : '' }
+        />
         
         { this.state.showResultList && <ResultList ref="list" 
             listClassName={ this.props.listClassName }

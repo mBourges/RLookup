@@ -33,7 +33,7 @@
   "dependencies": {
     "classnames": "2.2.3",
     "immutable": "3.7.6",
-    "rx": "4.0.7"
+    "rx": "4.1.0"
   },
   "devDependencies": {
     "babel-cli": "6.4.5",
