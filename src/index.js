@@ -119,7 +119,9 @@ class Lookup extends React.Component {
                 ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = '';
             }
             
-            if(!this.props.resetOnChange && ReactDOM.findDOMNode(this.refs.AutocompleteInput).value !== this.state.selected.get('label')) {
+            if(!this.props.resetOnChange && ReactDOM.findDOMNode(this.refs.AutocompleteInput).value === '') {
+                this.getItemToSelect(-1, '');
+            } else if(!this.props.resetOnChange && ReactDOM.findDOMNode(this.refs.AutocompleteInput).value !== this.state.selected.get('label')) {
                 ReactDOM.findDOMNode(this.refs.AutocompleteInput).value = this.state.selected.get('label');
             }
             
