@@ -1,12 +1,12 @@
-.lookup {
+.react-lookup {
    position: relative; 
 }
 
-.lookup input {
+.react-lookup input {
   width: 100%;
 }
 
-.lookup .option-list{
+.react-lookup .option-list{
    position: absolute;
    max-height: 200px;
    width: 100%;
@@ -19,18 +19,18 @@
    background-color: white;
 }
 
-.lookup ::-webkit-scrollbar {
+.react-lookup ::-webkit-scrollbar {
     width: 8px;
 }
  
-.lookup ::-webkit-scrollbar-track {
+.react-lookup ::-webkit-scrollbar-track {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
  
-.lookup ::-webkit-scrollbar-thumb {
+.react-lookup ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
     -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);

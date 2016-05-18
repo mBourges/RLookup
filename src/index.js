@@ -263,7 +263,7 @@ class Lookup extends React.Component {
     }
     
     render() {
-        const lookupClassName = ClassNames('lookup', this.props.lookupClassName);
+        const lookupClassName = ClassNames('react-lookup', this.props.lookupClassName);
         const hasResults = this.state.options.count() !== 0 ;
         const displaySearchMessage = this.state.isSearching;
         const displayNoResultMessage = !this.state.isSearching && !hasResults;
