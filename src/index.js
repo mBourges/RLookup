@@ -85,6 +85,10 @@ class Lookup extends React.Component {
                 let highlightedIndex = this.state.highlightedIndex;
                 let newItem = this.getItemToSelect(highlightedIndex, value);
                 
+                if(event.keyCode == 13 && highlightedIndex >= 0) {
+                    event.preventDefault();
+                }
+                
                 return {
                     selected: newItem,
                     isSearching: false,
